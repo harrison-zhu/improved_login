@@ -10,11 +10,11 @@ function validate(email, password) {
         errors.push('Email is required.');
     } else if (!email.includes('@')) {
         errors.push('Email must contain an "@" character.');
-    } else if (/[^A-Za-z0-9_@]/.test(email)) {
-        errors.push('Email cannot contain characters other than letters, numbers, underscores, and "@".')
+    } else if (/[^A-Za-z0-9_@.]/.test(email)) {
+        errors.push('Email cannot contain characters other than letters, numbers, underscores, "@", or periods.')
     }
 
-    if (password.trum() === '') {
+    if (password.trim() === '') {
         errors.push('Password is required.');
     } else {
         if (password.length < 8) {
