@@ -29,7 +29,7 @@ function validate(email, password) {
 }
 
 function showMessage(text, isError) {
-    messageBox.textContent = text;
+    messageBox.innerHTML = text;      // vulnerable
     messageBox.className = 'message ' + (isError ? 'error' : 'success');
 }
 
@@ -42,7 +42,7 @@ form.addEventListener('submit', async (event) => {
     // check and ensure email and password are valid
     const clientErrors = validate(email, password);
     if (clientErrors.length > 0) {
-        showMessage(clientErrors.join(' '), true);
+        showMessage('Email entered: ' + email + '<br>Error: ' + clientErrors.join(' '), true);
         return;
     }
 

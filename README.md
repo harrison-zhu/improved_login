@@ -18,7 +18,8 @@ exists, but there is no database set up for this small demo.
     letters, numbers, underscores, periods, and "@" symbols. Also, 
     the email field cannot be empty of filled with whitespace.
 - **Password** Should be over 8 characters long and not be empty or 
-    filled with whitespace.
+    filled with whitespace. Additionally, passwords cannot contain 
+    whitespace within them.
 
 
 ## Requirements
