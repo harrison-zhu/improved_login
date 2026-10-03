@@ -29,7 +29,7 @@ function validate(email, password) {
 }
 
 function showMessage(text, isError) {
-    messageBox.innerHTML = text;      // vulnerable
+    messageBox.innerHTML = text;
     messageBox.className = 'message ' + (isError ? 'error' : 'success');
 }
 
@@ -59,9 +59,8 @@ form.addEventListener('submit', async (event) => {
         if (data.ok) {
         showMessage(data.message, false);
         } else {
-
-        // occurs if not valid password with server
-        showMessage(data.errors.join(' '), true);
+            // occurs if not valid password with server
+            showMessage(data.errors.join(' '), true);
         }
     } catch (err) {
         showMessage('Could not reach the server.', true);
