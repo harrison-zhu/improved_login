@@ -27,26 +27,25 @@ function validateCredentials(email, password) {
   } else {
     if (password.length < 8) {
       errors.push('Password must be at least 8 characters long.');
+    } else if (/\s/.test(password)) {
+      errors.push('Password must not contain spaces.');
     }
   }
 
   return errors;
 }
 
-// ---- Login endpoint --------------------------------------------------------
 app.post('/login', (req, res) => {
   const { email, password } = req.body || {};
 
   const errors = validateCredentials(email, password);
 
   if (errors.length > 0) {
-    // 400 Bad Request: the submitted data failed validation.
+    // the data is not valid
     return res.status(400).json({ ok: false, errors });
   }
 
-  // Validation passed. This demo does not authenticate against a user
-  // store (no database); the assignment scope is input validation, not
-  // credential verification. A real app would look up the user here.
+  // data is valid and would ideally be checked again even further
   return res.status(200).json({
     ok: true,
     message: `Server accepted the login attempt for ${email}.`,

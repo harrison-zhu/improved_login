@@ -20,6 +20,9 @@ function validate(email, password) {
         if (password.length < 8) {
             errors.push('Password is too short. It should be 8 characters or more');
         }
+        if (/\s/.test(password)) {
+            errors.push('Password must not contain spaces.');
+        }
     }
 
     return errors;
